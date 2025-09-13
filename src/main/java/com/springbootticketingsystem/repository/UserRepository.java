@@ -1,5 +1,5 @@
-package com.springbootticketingsystem.repositories;
-import com.springbootticketingsystem.models.User;
+package com.springbootticketingsystem.repository;
+import com.springbootticketingsystem.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

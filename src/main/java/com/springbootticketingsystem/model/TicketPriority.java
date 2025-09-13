@@ -1,4 +1,4 @@
-package com.springbootticketingsystem.models;
+package com.springbootticketingsystem.model;
 
 public enum TicketPriority {
     PRIORITY_HIGH,

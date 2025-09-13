@@ -1,4 +1,4 @@
-package com.springbootticketingsystem.models;
+package com.springbootticketingsystem.model;
 
 public enum UserRol {
     ROLE_ADMIN,
