@@ -1,9 +1,7 @@
-package com.springbootticketingsystem.dto;
+package com.springbootticketingsystem.dto.comment;
 
 import com.springbootticketingsystem.model.Ticket;
 import com.springbootticketingsystem.model.User;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 import java.util.Date;
 

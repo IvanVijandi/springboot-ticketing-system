@@ -1,11 +1,9 @@
-package com.springbootticketingsystem.dto;
+package com.springbootticketingsystem.dto.ticket;
 
 import com.springbootticketingsystem.model.Department;
 import com.springbootticketingsystem.model.TicketPriority;
 import com.springbootticketingsystem.model.TicketState;
 import com.springbootticketingsystem.model.User;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 import java.util.Date;
 

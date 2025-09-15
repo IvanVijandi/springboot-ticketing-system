@@ -1,7 +1,5 @@
-package com.springbootticketingsystem.dto;
+package com.springbootticketingsystem.dto.department;
 import com.springbootticketingsystem.model.*;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 import java.util.List;
 

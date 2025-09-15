@@ -4,21 +4,31 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long  id;
-
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String surname ;
+    @Column(unique = true)
     private String email;
+    @Column(nullable = false)
     private String password;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private UserRol rol;
     //Atributos de ticket
+    @Column(nullable = true)
     @OneToMany(mappedBy = "userCreated")
     private List<Ticket> ticketsCreated;
+    @Column(nullable = true)
     @OneToMany(mappedBy = "userAsigned")
     private List<Ticket> ticketsAsigned;
+    @Column(nullable = true)
     @OneToMany
     private List<Comment> commentsCreated;
 
@@ -37,7 +47,7 @@ public class User {
     public String getName() {
         return name;
     }
-    public void setNombre(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -61,5 +71,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public UserRol getRol() { return rol; }
+    public void setRol(UserRol rol) { this.rol = rol; }
 
 }
