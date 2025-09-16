@@ -18,7 +18,7 @@ public class UserService {
 
     }
 
-    //CrearUsuario
+    //CREAR USUARIO
     public UserResponseDTO createUser(UserRequestDTO dto){
 
         User user = userMapper.toEntity(dto);
@@ -28,7 +28,27 @@ public class UserService {
 
     }
 
-    //ModificarUsuario
+    //OBTENER USUARIOS
+    public UserResponseDTO getUserById(Long id){
+
+       User user = userRepository.findById(id)
+               .orElseThrow(()-> new RuntimeException("User not found"));
+
+        return userMapper.toResponseDto(user);
+
+    }
+
+    public UserResponseDTO getUserByEmail(String email){
+
+        User user = userRepository.getUserByEmail(email);
+        if (user == null){
+            throw new RuntimeException("User not found");
+        }
+        return userMapper.toResponseDto(user);
+
+    }
+
+    //UPDATE
     public UserResponseDTO updateUser(UserRequestDTO user_Dto, Long id) {
 
         User user = userRepository.findById(id)
@@ -43,7 +63,7 @@ public class UserService {
 
     }
 
-    //Eliminar Usuario
+    //DELETE
     public UserResponseDTO deleteUser(Long id) {
 
         User user = userRepository.findById(id)
