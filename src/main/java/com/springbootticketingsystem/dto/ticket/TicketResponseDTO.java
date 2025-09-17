@@ -1,54 +1,36 @@
-package com.springbootticketingsystem.model;
-import jakarta.persistence.*;
+package com.springbootticketingsystem.dto.ticket;
 import com.springbootticketingsystem.model.*;
+
 import java.util.Date;
-import java.util.concurrent.CompletionException;
 import java.util.List;
 
-@Entity
-public class Ticket {
+public class TicketResponseDTO {
 
     //Atributos
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(unique = true)
     private String code;
-    @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
     private String description;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private TicketState state;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private  TicketPriority priority;
+    private TicketPriority priority;
     private Date dateCreated;
-    @Column(nullable = true)
     private Date dateModified;
-        //Atributos Usuarios
-
-    @ManyToOne
-    private User userCreated;
-    @ManyToOne
+    //Atributos Usuarios
+    private User  userCreated;
     private User userAsigned;
-        //Atributos de Departamento
-    @ManyToOne
+    //Atributos de Departamento
     private Department department;
-        //Atributos de comentario
-    @Column(nullable = true)
-    @OneToMany(mappedBy = "ticket")
+    //Comentarios
     private List<Comment> comments;
 
     //Constructores
-    public Ticket(){};
+    public TicketResponseDTO() {}
+    public TicketResponseDTO(Long id, String code, String title, String description, TicketState state, TicketPriority priority, Date dateCreated, Date dateModified, User userCreated, User userAsigned, Department department, List<Comment> comments) {
 
-    public Ticket(String code, String title, String description, TicketState state, TicketPriority priority, Date dateCreated, Date dateModified, User userCreated, User userAsigned, Department department) {
-
-        this.title = title;
+        this.id = id;
         this.code = code;
+        this.comments = comments;
+        this.title = title;
         this.description = description;
         this.state = state;
         this.priority = priority;
@@ -56,15 +38,14 @@ public class Ticket {
         this.dateModified = dateModified;
         this.userCreated = userCreated;
         this.userAsigned = userAsigned;
-        this.department = department;
+        this.department= department;
 
     }
 
     //Getters y setters
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) { this.id = id; }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code;}
 
     public String getTitle() { return title; }
     public void setTitle(String title) {
@@ -112,22 +93,17 @@ public class Ticket {
     public User getUserAsigned() {
         return userAsigned;
     }
-    public void setUserAsigned(User userAsigned) {
-        this.userAsigned = userAsigned;
-    }
+    public void setUserAsigned(User userAsigned) { this.userAsigned = userAsigned; }
 
     public Department getDepartment() {
         return department;
     }
-    public void setDepartment(Department department) {
+    public void setDepartment(Department departmentId) {
         this.department = department;
     }
 
     public List<Comment> getComments() { return comments; }
     public void setComments(List<Comment> comments) { this.comments = comments; }
-
-    public String getCode() { return code; }
-    public void setCode(String code) { this.code = code; }
 
 
 }

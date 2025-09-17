@@ -1,16 +1,14 @@
 package com.springbootticketingsystem.dto.ticket;
-
-import com.springbootticketingsystem.model.Department;
-import com.springbootticketingsystem.model.TicketPriority;
-import com.springbootticketingsystem.model.TicketState;
-import com.springbootticketingsystem.model.User;
+import com.springbootticketingsystem.model.*;
 
 import java.util.Date;
+import java.util.List;
 
-public class TicketDTO {
+public class TicketRequestDTO {
 
     //Atributos
     private Long id;
+    private String code;
     private String title;
     private String description;
     private TicketState state;
@@ -18,31 +16,36 @@ public class TicketDTO {
     private Date dateCreated;
     private Date dateModified;
         //Atributos Usuarios
-    private User userCreated;
-    private User userAsigned;
+    private Long  userCreatedId;
+    private Long userAsignedId;
         //Atributos de Departamento
-    private Department department;
+    private Long departmentId;
+        //Comentarios
+    private List<Comment> comments;
 
     //Constructores
-    public TicketDTO(String title, String description, TicketState state, TicketPriority priority, Date dateCreated, Date dateModified, User userCreated, User userAsigned, Department department) {
+    public TicketRequestDTO() {}
+    public TicketRequestDTO(Long id, String code, String title, String description, TicketState state, TicketPriority priority, Date dateCreated, Date dateModified, Long userCreatedId, Long userAsignedId, Long departmentId, List<Comment> comments) {
 
+        this.id = id;
+        this.code = code;
+        this.comments = comments;
         this.title = title;
         this.description = description;
         this.state = state;
         this.priority = priority;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
-        this.userCreated = userCreated;
-        this.userAsigned = userAsigned;
-        this.department = department;
+        this.userCreatedId = userCreatedId;
+        this.userAsignedId = userAsignedId;
+        this.departmentId = departmentId;
 
     }
 
     //Getters y setters
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) { this.id = id; }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code;}
 
     public String getTitle() { return title; }
     public void setTitle(String title) {
@@ -80,25 +83,27 @@ public class TicketDTO {
         this.dateModified = dateModified;
     }
 
-    public User getUserCreated() {
-        return userCreated;
+    public Long getUserCreatedId() {
+        return userCreatedId;
     }
-    public void setUserCreated(User userCreated) {
-        this.userCreated = userCreated;
-    }
-
-    public User getUserAsigned() {
-        return userAsigned;
-    }
-    public void setUserAsigned(User userAsigned) {
-        this.userAsigned = userAsigned;
+    public void setUserCreatedId(Long userCreatedId) {
+        this.userCreatedId = userCreatedId;
     }
 
-    public Department getDepartment() {
-        return department;
+    public Long getUserAsignedId() {
+        return userAsignedId;
     }
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setUserAsignedId(Long userAsignedId) { this.userAsignedId = userAsignedId; }
+
+    public Long getDepartmentId() {
+        return departmentId;
     }
+    public void setDepartment(Long departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public List<Comment> getComments() { return comments; }
+    public void setComments(List<Comment> comments) { this.comments = comments; }
+
 
 }

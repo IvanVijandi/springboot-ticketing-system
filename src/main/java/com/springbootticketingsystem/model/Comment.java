@@ -2,6 +2,8 @@ package com.springbootticketingsystem.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import org.hibernate.cache.internal.TimestampsCacheEnabledImpl;
+
 
 import  java.util.Date;
 
@@ -12,11 +14,14 @@ public class Comment {
     private Long id;
     private String commentContent;
     private Date dateCreated;
-    //Atributos de usuarios
+        //Atributos de usuarios
     @ManyToOne
     private User author;
+        //Atributos de ticket
     @ManyToOne
     private Ticket ticket;
+
+
 
 
     //Constructores
