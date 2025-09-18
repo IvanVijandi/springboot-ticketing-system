@@ -38,13 +38,30 @@ public class TicketService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         String codigo = NanoIdUtils.randomNanoId();
-        Ticket ticket = ticketMapper.toEntity(dto, codigo);
+        Ticket ticket = ticketMapper.toEntity(dto);
+        ticket.setCode(codigo);
         ticket.setDepartment(dept);
         ticket.setUserAsigned(userAsigned);
         ticket.setUserCreated(userCreated);
         Ticket ticketCreated = ticketRepository.save(ticket);
 
         return  ticketMapper.toDto(ticketCreated);
+    }
+
+
+    //OBTENER TICKET
+    public TicketResponseDTO getTicketById(Long ticketId) {
+
+        Ticket ticket = ticketRepository.findById(ticketId)
+                .orElseThrow(() -> new IllegalArgumentException("Ticket not found"));
+
+        return   ticketMapper.toDto(ticket);
+    }
+
+    public TicketResponseDTO getTicketByCode(String code) {
+
+        Ticket ticket = ticketRepository.findByCode(code);
+        return  ticketMapper.toDto(ticket);
     }
 
 

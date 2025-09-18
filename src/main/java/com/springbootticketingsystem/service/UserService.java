@@ -10,11 +10,11 @@ import com.springbootticketingsystem.mapper.UserMapper;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserMapper userMapper; // Se genera una clase de forma automatica que implementa la interfaz
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
-        this.userMapper = new UserMapper();
+        this.userMapper = userMapper;
 
     }
 
@@ -23,7 +23,7 @@ public class UserService {
 
         User user = userMapper.toEntity(dto);
         User user_created = userRepository.save(user);
-        return userMapper.toResponseDto(user_created);
+        return userMapper.toDto(user_created);
 
 
     }
@@ -34,7 +34,7 @@ public class UserService {
        User user = userRepository.findById(id)
                .orElseThrow(()-> new RuntimeException("User not found"));
 
-        return userMapper.toResponseDto(user);
+        return userMapper.toDto(user);
 
     }
 
@@ -44,7 +44,7 @@ public class UserService {
         if (user == null){
             throw new RuntimeException("User not found");
         }
-        return userMapper.toResponseDto(user);
+        return userMapper.toDto(user);
 
     }
 
@@ -59,7 +59,7 @@ public class UserService {
         user.setSurname(user_Dto.getSurname());
         user.setRol(user_Dto.getRol());
         userRepository.save(user);
-        return userMapper.toResponseDto(user);
+        return userMapper.toDto(user);
 
     }
 
@@ -70,7 +70,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         userRepository.delete(user);
-        return userMapper.toResponseDto(user);
+        return userMapper.toDto(user);
     }
 
 }
