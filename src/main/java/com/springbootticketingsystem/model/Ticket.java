@@ -1,8 +1,8 @@
 package com.springbootticketingsystem.model;
+
 import jakarta.persistence.*;
-import com.springbootticketingsystem.model.*;
+
 import java.util.Date;
-import java.util.concurrent.CompletionException;
 import java.util.List;
 
 @Entity
@@ -13,7 +13,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String code;
     @Column(nullable = false)
     private String title;
@@ -30,12 +30,16 @@ public class Ticket {
     private Date dateModified;
         //Atributos Usuarios
 
+
     @ManyToOne
+    @JoinColumn(nullable = false)
     private User userCreated;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private User userAssigned;
         //Atributos de Departamento
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Department department;
         //Atributos de comentario
     @Column(nullable = true)
