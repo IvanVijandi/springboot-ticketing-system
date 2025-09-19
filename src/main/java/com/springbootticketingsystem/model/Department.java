@@ -1,6 +1,8 @@
 package com.springbootticketingsystem.model;
+import com.springbootticketingsystem.dto.ticket.TicketResponseDTO;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,7 +31,7 @@ public class Department {
     public void setName(String name) { this.name = name; }
 
     public List<Ticket> getTickets() { return tickets; }
-    public void setTickets(List<Ticket> tickets) { this.tickets = tickets; }
+    public void setTickets(ArrayList<Ticket> tickets) { this.tickets = tickets; }
 
 
 

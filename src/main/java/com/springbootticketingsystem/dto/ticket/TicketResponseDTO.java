@@ -1,8 +1,6 @@
 package com.springbootticketingsystem.dto.ticket;
 
-import com.springbootticketingsystem.dto.comment.CommentDTO;
-import com.springbootticketingsystem.dto.department.DepartmentDTO;
-import com.springbootticketingsystem.dto.user.UserResponseDTO;
+import com.springbootticketingsystem.dto.comment.CommentRequestDTO;
 import com.springbootticketingsystem.model.*;
 
 import java.util.Date;
@@ -10,7 +8,6 @@ import java.util.List;
 
 public class TicketResponseDTO {
 
-    private Long id;
     private String code;
     private String title;
     private String description;
@@ -18,24 +15,22 @@ public class TicketResponseDTO {
     private TicketPriority priority;
     private Date dateCreated;
     private Date dateModified;
+    //Relaciones
+    private String userCreatedEmail;
+    private String userAssignedEmail;
+    private String departmentName;
+    private List<CommentRequestDTO> commentsDTO;
 
-
-    private UserResponseDTO userCreated;
-    private UserResponseDTO userAsigned;
-
-    private DepartmentDTO departmentDTO;
-    private List<CommentDTO> commentsDTO;
-
-    public TicketResponseDTO() {}
+    public TicketResponseDTO() {
+    }
 
     public TicketResponseDTO(
-            Long id, String code, String title, String description,
+             String code, String title, String description,
             TicketState state, TicketPriority priority,
             Date dateCreated, Date dateModified,
-            UserResponseDTO userCreated, UserResponseDTO userAsigned,
-            DepartmentDTO departmentDTO, List<CommentDTO> commentsDTO) {
+            String userCreatedEmail, String userAssignedEmail,
+            String departmentName, List<CommentRequestDTO> commentsDTO) {
 
-        this.id = id;
         this.code = code;
         this.title = title;
         this.description = description;
@@ -43,47 +38,100 @@ public class TicketResponseDTO {
         this.priority = priority;
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
-        this.userCreated = userCreated;
-        this.userAsigned = userAsigned;
-        this.departmentDTO =  departmentDTO;
+        this.userAssignedEmail = userAssignedEmail;
+        this.userCreatedEmail = userCreatedEmail;
+        this.departmentName = departmentName;
         this.commentsDTO = commentsDTO;
     }
 
     // Getters & setters
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getCode() {
+        return code;
+    }
 
-    public String getCode() { return code; }
-    public void setCode(String code) { this.code = code; }
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public TicketState getState() { return state; }
-    public void setState(TicketState state) { this.state = state; }
+    public String getDescription() {
+        return description;
+    }
 
-    public TicketPriority getPriority() { return priority; }
-    public void setPriority(TicketPriority priority) { this.priority = priority; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public Date getDateCreated() { return dateCreated; }
-    public void setDateCreated(Date dateCreated) { this.dateCreated = dateCreated; }
+    public TicketState getState() {
+        return state;
+    }
 
-    public Date getDateModified() { return dateModified; }
-    public void setDateModified(Date dateModified) { this.dateModified = dateModified; }
+    public void setState(TicketState state) {
+        this.state = state;
+    }
 
-    public UserResponseDTO getUserCreated() { return userCreated; }
-    public void setUserCreated(UserResponseDTO userCreated) { this.userCreated = userCreated; }
+    public TicketPriority getPriority() {
+        return priority;
+    }
 
-    public UserResponseDTO getUserAsigned() { return userAsigned; }
-    public void setUserAsigned(UserResponseDTO userAsigned) { this.userAsigned = userAsigned; }
+    public void setPriority(TicketPriority priority) {
+        this.priority = priority;
+    }
 
-    public DepartmentDTO getDepartment() { return departmentDTO; }
-    public void setDepartment(DepartmentDTO departmentDTO) { this.departmentDTO = departmentDTO; }
+    public Date getDateCreated() {
+        return dateCreated;
+    }
 
-    public List<CommentDTO> getComments() { return commentsDTO; }
-    public void setComments(List<CommentDTO> commentsDTO) { this.commentsDTO = commentsDTO; }
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getDateModified() {
+        return dateModified;
+    }
+
+    public void setDateModified(Date dateModified) {
+        this.dateModified = dateModified;
+    }
+
+    public String getUserCreatedEmail() {
+        return userCreatedEmail;
+    }
+
+    public void setUserCreatedEmail(String userCreatedEmail) {
+        this.userCreatedEmail = userCreatedEmail;
+    }
+
+    public String getUserAssigned() {
+        return userAssignedEmail;
+    }
+
+    public void setUserAssignedEmail(String userAssignedEmail) {
+        this.userAssignedEmail = userAssignedEmail;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public List<CommentRequestDTO> getComments() {
+        return commentsDTO;
+    }
+
+    public void setComments(List<CommentRequestDTO> commentsDTO) {
+        this.commentsDTO = commentsDTO;
+    }
+
 }

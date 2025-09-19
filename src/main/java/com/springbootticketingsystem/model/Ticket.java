@@ -33,7 +33,7 @@ public class Ticket {
     @ManyToOne
     private User userCreated;
     @ManyToOne
-    private User userAsigned;
+    private User userAssigned;
         //Atributos de Departamento
     @ManyToOne
     private Department department;
@@ -55,7 +55,7 @@ public class Ticket {
         this.dateCreated = dateCreated;
         this.dateModified = dateModified;
         this.userCreated = userCreated;
-        this.userAsigned = userAsigned;
+        this.userAssigned = userAsigned;
         this.department = department;
 
     }
@@ -109,11 +109,11 @@ public class Ticket {
         this.userCreated = userCreated;
     }
 
-    public User getUserAsigned() {
-        return userAsigned;
+    public User getUserAssigned() {
+        return userAssigned;
     }
-    public void setUserAsigned(User userAsigned) {
-        this.userAsigned = userAsigned;
+    public void setUserAssigned(User userAssigned) {
+        this.userAssigned = userAssigned;
     }
 
     public Department getDepartment() {

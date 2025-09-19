@@ -41,7 +41,7 @@ public class TicketService {
         Ticket ticket = ticketMapper.toEntity(dto);
         ticket.setCode(codigo);
         ticket.setDepartment(dept);
-        ticket.setUserAsigned(userAsigned);
+        ticket.setUserAssigned(userAsigned);
         ticket.setUserCreated(userCreated);
         Ticket ticketCreated = ticketRepository.save(ticket);
 

@@ -5,7 +5,7 @@ import com.springbootticketingsystem.model.User;
 
 import java.util.Date;
 
-public class CommentDTO {
+public class CommentRequestDTO {
 
     //Atributos
     private Long id;
@@ -16,7 +16,7 @@ public class CommentDTO {
     private Ticket ticket;
 
     //Constructor
-    public CommentDTO(Long id, String commentContent, Date dateCreated, User user) {
+    public CommentRequestDTO(Long id, String commentContent, Date dateCreated, User user) {
         this.id = id;
         this.commentContent = commentContent;
         this.dateCreated = dateCreated;

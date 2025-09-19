@@ -26,8 +26,8 @@ public class User {
     @OneToMany(mappedBy = "userCreated")
     private List<Ticket> ticketsCreated;
     @Column(nullable = true)
-    @OneToMany(mappedBy = "userAsigned")
-    private List<Ticket> ticketsAsigned;
+    @OneToMany(mappedBy = "userAssigned")
+    private List<Ticket> ticketsAssigned;
     @Column(nullable = true)
     @OneToMany
     private List<Comment> commentsCreated;

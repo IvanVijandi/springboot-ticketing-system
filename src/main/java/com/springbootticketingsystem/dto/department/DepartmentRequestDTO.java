@@ -4,13 +4,13 @@ import com.springbootticketingsystem.model.*;
 import java.util.List;
 
 
-public class DepartmentDTO {
+public class DepartmentRequestDTO {
 
     private Long Id;
     private String name;
     private List<Ticket> tickets;
 
-    public DepartmentDTO(Long id,String name,List<Ticket> tickets) {
+    public DepartmentRequestDTO(Long id, String name, List<Ticket> tickets) {
         this.Id=id;
         this.name=name;
         this.tickets=tickets;
